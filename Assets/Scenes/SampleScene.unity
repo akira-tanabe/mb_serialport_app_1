@@ -967,8 +967,8 @@ Rigidbody:
   m_GameObject: {fileID: 657262268}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.75
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -1162,8 +1162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620b2b517e3b547dea889981c743122f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 19
-  boostspeed: 7
+  speed: 500
+  boostspeed: 5
   breakingspeed: -10
   rotatespeed: 45
   headupespeed: 66
