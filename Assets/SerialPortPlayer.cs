@@ -19,8 +19,10 @@ public class SerialPortPlayer : MonoBehaviour
         receiver?.Dispose();
         receiver = null;
     }
-    string getvalue(string m, string ifempty = "0") => (string.IsNullOrEmpty(m))? ifempty : m;
-    int getintvalue(string m, string ifempty = "0") => int.Parse((string.IsNullOrEmpty(m)) ? ifempty : m);
+    string getvalue(string m, string ifempty = "0")
+        => (string.IsNullOrEmpty(m))? ifempty : m;
+    int getintvalue(string m, string ifempty = "0")
+        => int.Parse((string.IsNullOrEmpty(m)) ? ifempty : m);
     void onreceive(string m)
     {
         if (!string.IsNullOrEmpty(m))
@@ -69,7 +71,8 @@ public class SerialPortPlayer : MonoBehaviour
     public int SAMPLESIZE = 3;
     const int MAXHISTORY = 1024;
     const float MAXVALUE = 1024f;
-    public List<DeviceContext> history = new List<DeviceContext>() { default, default, default, default };
+    public List<DeviceContext> history
+        = new List<DeviceContext>() { default, default, default, default };
     public DeviceContext deviceinput => history.Count>0? history[0]:default;
     public GameObject target;
 }
@@ -89,14 +92,17 @@ public struct DeviceContext
     /// <summary>
     /// 右手系座標から左手系変換
     /// </summary>
-    public Vector3 axis { get { return new Vector3(((float)axisy / 1024f) * ANGLE, 0f, ((float)axisx / 1024f) * ANGLEZ); } }
+    public Vector3 axis { get {
+            return new Vector3(((float)axisy/1024f)*ANGLE,0f,((float)axisx/1024f)*ANGLEZ);
+        }}
     public bool isA { get { return press.HasFlag(PressButton.A); } }
     public bool isB { get { return press.HasFlag(PressButton.B); } }
     public bool isLogo { get { return press.HasFlag(PressButton.LOGO); } }
 
     public override string ToString()
     {
-        return $"{press} ... A:{isA}, B:{isB}, Logo:{isLogo}, axis:{axis}, gesture:{string.Join(",",gest_histry)}";
+        return $"{press} ... A:{isA}, B:{isB}, Logo:{isLogo}, " +
+            $"axis:{axis}, gesture:{string.Join(",",gest_histry)}";
     }
     [Flags]
     public enum PressButton
